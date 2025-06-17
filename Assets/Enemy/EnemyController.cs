@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
         direction = endPosition - startPosition;
 
         defTime = coolTime;
+        rigidbody2D.AddForce(direction.normalized * 3.0f, ForceMode2D.Impulse);
     }
 
     void Update()
