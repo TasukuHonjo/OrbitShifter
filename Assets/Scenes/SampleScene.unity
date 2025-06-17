@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 54990947}
   - component: {fileID: 54990948}
   - component: {fileID: 54990949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OutLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ EdgeCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 121837156}
   - component: {fileID: 121837155}
   - component: {fileID: 121837154}
+  - component: {fileID: 121837157}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -424,7 +425,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1566054754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &121837149
@@ -1287,6 +1289,22 @@ SpringJoint2D:
   m_Distance: 0.005
   m_DampingRatio: 0
   m_Frequency: 1
+--- !u!114 &121837157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121837146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f295241c548ce1b468024c74f275b854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 999620822723632529, guid: c8cbe59d7fdf5e84d98eb99f224d812e, type: 3}
+  bulletForce: 20
+  nozzleTra: {fileID: 1566054754}
+  coolTime: 0.3
 --- !u!1 &509019286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1776,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1566054753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566054754}
+  m_Layer: 0
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1566054754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566054753}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.536, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 121837148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
