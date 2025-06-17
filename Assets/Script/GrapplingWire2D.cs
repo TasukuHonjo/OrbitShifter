@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpringJoint2D), typeof(LineRenderer))]
 public class GrapplingWire2D : MonoBehaviour
@@ -11,6 +12,7 @@ public class GrapplingWire2D : MonoBehaviour
     private bool isConnected = false;
 
     Transform playerTra;
+    Vector2 endPos;
 
     void Awake()
     {
@@ -33,7 +35,7 @@ public class GrapplingWire2D : MonoBehaviour
         {
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
-
+            endPos = mouseWorld;
             ConnectWire(mouseWorld);
         }
 
@@ -45,6 +47,11 @@ public class GrapplingWire2D : MonoBehaviour
 
         // 右クリック離したらワイヤー解除
         if (Input.GetMouseButtonUp(1) && isConnected)
+        {
+            DisconnectWire();
+        }
+
+        if(Vector2.Distance(transform.position, endPos)<0.5 && isConnected)
         {
             DisconnectWire();
         }
@@ -66,8 +73,8 @@ public class GrapplingWire2D : MonoBehaviour
         springJoint.autoConfigureDistance = false;
         springJoint.distance = Vector2.Distance(transform.position, target);
         springJoint.distance = 0.1f;
-        springJoint.dampingRatio = 0.7f;     // 揺れの減衰
-        springJoint.frequency = 0.5f;        // 張力（ゴム感）
+        springJoint.dampingRatio = 0.95f;     // 揺れの減衰
+        springJoint.frequency = 1.5f;        // 張力（ゴム感）
         springJoint.enabled = false;         // 最初はOFF、右クリックでON
 
         // LineRenderer更新
