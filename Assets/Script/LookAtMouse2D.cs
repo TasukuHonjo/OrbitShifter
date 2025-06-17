@@ -3,25 +3,27 @@ using UnityEngine;
 public class LookAtMouse2D : MonoBehaviour
 {
     private Camera mainCamera;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // マウスのワールド座標を取得
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f; // Z座標を0に（2Dなので）
+        mouseWorldPos.z = 0f;
 
         // 自分の位置からマウスへの方向を計算
-        Vector3 direction = mouseWorldPos - transform.position;
+        Vector2 direction = (mouseWorldPos - transform.position).normalized;
 
-        // 角度を算出して回転
+        // 角度を算出
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Z軸を回転させて向きを変更（スプライトの右を前提とする）
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        // Rigidbody2Dで回転を適用（瞬時に向ける場合）
+        rb.MoveRotation(angle);
     }
 }
