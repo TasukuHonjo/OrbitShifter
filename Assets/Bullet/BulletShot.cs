@@ -20,7 +20,7 @@ public class BulletShot : MonoBehaviour
     {
 
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(0))
         {
             time += Time.deltaTime;
             if (coolTime < time)

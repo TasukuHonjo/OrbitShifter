@@ -33,15 +33,19 @@ public class GrapplingWire2D : MonoBehaviour
         // 左クリックでワイヤー発射・接続
         if (Input.GetMouseButtonDown(0))
         {
+            //Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            //mouseWorld.z = 0f;
+            //endPos = mouseWorld;
+            //ConnectWire(mouseWorld);
+        }
+
+        // 右クリック押してる間、ワイヤー有効（引き寄せ）
+        if (Input.GetMouseButton(1))
+        {
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
             endPos = mouseWorld;
             ConnectWire(mouseWorld);
-        }
-
-        // 右クリック押してる間、ワイヤー有効（引き寄せ）
-        if (Input.GetMouseButton(1) && isConnected)
-        {
             springJoint.enabled = true;
         }
 

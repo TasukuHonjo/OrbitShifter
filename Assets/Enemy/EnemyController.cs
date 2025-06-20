@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
     void Start()
     {
